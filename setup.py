@@ -30,9 +30,12 @@ def install():
         arhitecture = pf.architecture()
         pythonVer = pf.python_version()
         system = pf.system()
-        androidVer = pf.android_ver()
         version = pf.version()
-        
+        print(f"""Архетиктура: {arhitecture}
+        Версия вашего Python: {pythonVer}
+        Система: {system}
+        Версия Системы:  {version}
+        """)
         #===================================
         print("Установка необходимых pip-пакетов...")
         os.system("pip install TIME-PYTHON")
@@ -143,3 +146,4 @@ except KeyboardInterrupt:
 except Exception as e:
     print(f"Произошла ошибка: {e}")
     sys.exit(1)
+
