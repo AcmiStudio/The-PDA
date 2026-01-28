@@ -1,7 +1,7 @@
 
 #============================================
 # Привет!
-# Я работал над этим проектом: 5 часов
+# Я работал над этим проектом: 15 часов
 #============================================
 
 #Импорт библиотек которые входяти в обычный пакет python
@@ -30,15 +30,12 @@ def install():
         arhitecture = pf.architecture()
         pythonVer = pf.python_version()
         system = pf.system()
+        androidVer = pf.android_ver()
         version = pf.version()
-        print(f"""Архетиктура: {arhitecture}
-        Версия вашего Python: {pythonVer}
-        Система: {system}
-        Версия Системы:  {version}
-        """)
+        
         #===================================
         print("Установка необходимых pip-пакетов...")
-        os.system("pip install TIME-PYTHON")
+        os.system("pip install python-time")
         os.system("pip install termcolor")
         os.system("echo Установка завершена")
         #===================================
@@ -47,8 +44,12 @@ def install():
         #===================================
         print("Поздравляю пользователь, установка нужных пакетов была завершена! \nШаг 2: Выдадим нужные права, нажмите принять, это очень нужно!")
         os.system("echo Выдача прав...")
+        os.sleep(2)
         os.system("termux-setup-storage")
+        os.sleep(1)
         os.system("echo Выдача прав завершена")
+        time.sleep(1)
+        print("В будущем нужно выбрать зелкала для установки пакетов, но это можно сделать чуть позже,\nИнструкцию можно посмотреть у меня на страничке,\nссылка будет в конце установки программы.")
         time.sleep(1)
         print("Молодцы, теперь нужно проверить все файлы системы и создать нужные папки для сохранения данных!")
         time.sleep(1)
@@ -146,4 +147,3 @@ except KeyboardInterrupt:
 except Exception as e:
     print(f"Произошла ошибка: {e}")
     sys.exit(1)
-
