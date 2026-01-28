@@ -30,9 +30,11 @@ def install():
         arhitecture = pf.architecture()
         pythonVer = pf.python_version()
         system = pf.system()
-        androidVer = pf.android_ver()
         version = pf.version()
-        
+        print("="*50)
+        print(f"Архитектура: {arhitecture}\nВерсия Python: {pythonVer}\nСистема: {system}\nВерсия Android: {version}")
+        print("="*50)
+        print()
         #===================================
         print("Установка необходимых pip-пакетов...")
         os.system("pip install python-time")
@@ -122,13 +124,13 @@ def install():
 try:
     command = input("Запустить установку для Termux? (да/нет): ").lower()
     
-    command_install = ["pkg update && pkg upgrade", "pkg install python3", "pkg install python-pip", "pkg "] #Список нужных для установки команд и обновление пакетов
+    command_install = ["pkg update && pkg upgrade", "pkg install python3", "pkg install python-pip", "pkg install vim && pkg install nano"] #Список нужных для установки команд и обновление пакетов
     if command == "y" or command == "да" or command == "yes" or command == "д":
         if pf.system() == "Linux": # Ранняя быстрая проверка устройства для установки.
             print("Установка необходимых пакетов на Termux...")
             for i in command_install: #Цикл для установки пакетов
                 os.system(i)
-            os.system("pkg install vim && pkg install nano")
+            
             print("Все успешно установилось!")
             install()
             print("Установка завершена!")
@@ -145,5 +147,5 @@ except KeyboardInterrupt:
     print("\nУстановка прервана пользователем")
     sys.exit(0)
 except Exception as e:
-    print(f"Произошла ошибка: {e}")
+    print(f"Простите! Произошла ошибка: {e}")
     sys.exit(1)
