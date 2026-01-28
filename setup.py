@@ -43,9 +43,19 @@ def install():
         #===================================
         import time
         time.sleep(1)
-        def typewriter_effect(self, text, delay=0.05):
-            self.slow_print(text, delay)
-            time.sleep(0.5)
+        
+        class TextPrinter:
+            def slow_print(self, text, delay=0.03):
+                for char in text:
+                    sys.stdout.write(char)
+                    sys.stdout.flush()
+                    time.sleep(delay)
+                print()
+
+            def typewriter_effect(self, text, delay=0.05):
+                self.slow_print(text, delay)
+                time.sleep(0.5)
+        printer = TextPrinter()
         #===================================
         print("Поздравляю пользователь, установка нужных пакетов была завершена! \nШаг 2: Выдадим нужные права, нажмите принять, это очень нужно!")
         os.system("echo Выдача прав...")
@@ -108,10 +118,10 @@ def install():
         print("Внимание! Вам пришло сообщение от разработчика! Отказаться нельзя.")
         time.sleep(2)
         print()
-        typewriter_effect("=" * 50)
-        typewriter_effect("Приветствую Друг! Я создал эту программу для termux чтоб можно было повесилиться!\nНо я понимаю пользователей которые вообще не знакомы с Linux.\nНо не беда, программа вам будет четко объяснять и помогать.\nТак же если вам не удобно запускать программы через терминал -\nто вы можете прочитать гайдына оффициальной странице проекта.\nОбновления будут выходить старательно по выходным,\nхорошо вам развлечься и успехов вам!")
-        typewriter_effect("Сайт: https://github.com/AcmiStudio/THE-PDA")
-        typewriter_effect("=" * 50)
+        printer.typewriter_effect("=" * 50)
+        printer.typewriter_effect("Приветствую Друг! Я создал эту программу для termux чтоб можно было повесилиться!\nНо я понимаю пользователей которые вообще не знакомы с Linux.\nНо не беда, программа вам будет четко объяснять и помогать.\nТак же если вам не удобно запускать программы через терминал -\nто вы можете прочитать гайдына оффициальной странице проекта.\nОбновления будут выходить старательно по выходным,\nхорошо вам развлечься и успехов вам!")
+        printer.typewriter_effect("Сайт: https://github.com/AcmiStudio/THE-PDA")
+        printer.typewriter_effect("=" * 50)
         input("Нажмите Ввод чтобы продолжить...")
         clear()
         time.sleep(1)
